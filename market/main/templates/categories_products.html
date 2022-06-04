@@ -1,0 +1,14 @@
+{% extends 'main_page.html' %}
+
+<main class="main">
+    {% block content %}
+    {% for prod in products %}
+    <div class="item_img">
+        <img src="{{ prod.image.url }}" alt="картинки нет" class="img">
+        <p>{{prod.title}}</p>
+        <p>{{prod.price}}</p>
+        <p>{{prod.description}}</p>
+    </div>
+    {% endfor %}
+    {% endblock %}
+</main>

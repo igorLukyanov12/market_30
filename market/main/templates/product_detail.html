@@ -1,0 +1,16 @@
+{% extends 'main_page.html' %}
+
+<main class="main">
+    {% block content %}
+    <h1>Детализация продукта</h1>
+    <div class="item_img">
+        <img src="{{ product.image.url }}" alt="картинки нет" class="img">
+        <p>{{product.title}}</p>
+        <p>{{product.price}}</p>
+        <p>{{product.description}}</p>
+        {% for m in shops %}
+            <p>{{ m.name }}</p>
+        {% endfor %}
+    </div>
+    {% endblock %}
+</main>

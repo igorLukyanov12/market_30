@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Less_Forms</title>
+    <link rel="stylesheet" href="{% static 'css/add.css'%}">
+</head>
+<body>
+<h1>Hello Less_Forms</h1>
+
+<form action="{% url 'main:product_form' %}" method="POST">
+    {% csrf_token %}
+    <p>Добавление продукта</p>
+    <input type="text" name="product" placeholder="название продукта"><br>
+    <textarea name="description" cols="30" rows="10"></textarea><br>
+    <input type="number" name="price"><span>цена</span><br>
+    <input type="file" name="image"><span>фото продукта</span><br>
+    {% for cat in cati %}
+    <input type="radio" name="categories" value="{{ cat.name }}"><strong>{{ cat.name }}</strong> <br>
+    {% endfor %}
+    <button class="button">OK</button>
+</form>
+<form action="{% url 'main:category_form' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>Добавление категории</p>
+    <input type="text" name="category"><br>
+    <button class="button">OK</button>
+</form>
+<form action="{% url 'main:shop_form' %}" method="POST">
+    {% csrf_token %}
+    <p>Добавление магазина</p>
+    <input type="text" name="shop"><span>название магазина</span><br>
+    <input type="text" name="city"><span>город</span><br>
+    <input type="text" name="street"><span>улица</span><br>
+    {% for pr in prod %}
+    <input type="checkbox" name="shop_products" value="{{ pr.title }}"><strong>{{ pr.title }}</strong><br>
+    {% endfor %}
+
+
+    <button class="button">OK</button>
+</form>
+<h1>Форма class FORM</h1>
+<form action="{% url 'main:form_category' %}" method="POST">
+    {% csrf_token %}
+    {{ errors.text }}
+    {{ form.as_p }}
+    <button>OK FORM</button>
+</form>
+
+</body>
+</html>

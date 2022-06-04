@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Market_Python</title>
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+</head>
+<body>
+<header id="header">
+    <div class="block">
+        <a href="https://yandex.by/images/search?pos=5&img_url=https%3A%2F%2Ftehnovse.ru%2Fimages%2Fthumbnails%2F1152%2F942%2Fdetailed%2F536%2F5826595.jpg&text=huawei%20logo&lr=157&rpt=simage&source=serp"><img src="{% static 'img/i.png' %}" alt="картинки нет" class="header__logo"></a>
+        <a href="https://mail.ru">Hello</a>
+    </div>
+    <div class="block">World</div>
+    <div class="block">!!!!!</div>
+
+</header>
+<nav class="nav">
+    <ul class="nav_ul">
+        <li><a href="{% url 'main:main_page' %}">Все</a></li>
+        {% for cat in categories %}
+        <li><a href="{% url 'main:category_sort' cat.id %}">{{ cat.name }}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
+<main class="main">
+    {% block content %}
+    {% for prod in products %}
+    <div class="item_img">
+        <a href="{% url 'main:product_detail' prod.id %}">
+        <img src="{{ prod.image.url }}" alt="картинки нет" class="img">
+        <p>{{prod.title}}</p>
+        <p>{{prod.price}}</p>
+        <p>{{prod.description}}</p>
+        </a>
+    </div>
+    {% endfor %}
+    {% endblock %}
+</main>
+</body>
+</html>

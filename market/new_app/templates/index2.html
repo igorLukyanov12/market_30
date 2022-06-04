@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 align = center>Hello, world</h1>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>OK</button>
+</form><br><br>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <strong>Nickname</strong><input type="text"><br>
+    <strong>Login</strong><input type="text"><br>
+    <strong>Password</strong><input type="text"><br>
+    <strong>Photo</strong><input type="file"><br>
+    <button>OK</button>
+</form>
+</body>
+</html>
